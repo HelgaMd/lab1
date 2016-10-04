@@ -6,7 +6,7 @@ public class my_sum {
 
     public static void main(String[] args) {
         calc c = new calc();
-        int r = c.add("//[kk][;][,]\n1kk3;3;1001");
+        int r = c.add("//[kk][;][,]\n1;3;3;1001");
         System.out.println(r);
     }
 }

@@ -64,16 +64,14 @@ class calc {
             pattern = Pattern.compile("^//(.*)");
             Matcher m = pattern.matcher(str_numbers[0]);
             if (m.matches()){
-                pattern = Pattern.compile("\\[|\\]");
+                String temp = m.group(1);
+                pattern = Pattern.compile("\\[([^\\]]+)\\]");
+                m = pattern.matcher(temp);
                 String delimiters = "";
-                for (String s:pattern.split(m.group(1))){
-                    if (!s.isEmpty()) {
-                        if (!delimiters.isEmpty())
-                            delimiters = delimiters+"|"+s;
-                        else
-                            delimiters = delimiters+s;
-                    }
+                while (m.find()){
+                    delimiters = delimiters + m.group(1)+"|";
                 }
+                delimiters = delimiters.substring(0, delimiters.length()-1);
                 return this.def_add(str_numbers[1], delimiters);
             }
             else {
