@@ -26,13 +26,7 @@ class calc {
             String str =  "Negatives not allowed. "+m.group(1)+" ";
             while (m.find())
                 str += m.group(1)+" ";
-//            try {
             throw new SubZero(str);
-//            }
-//            catch (SubZero e){
-//                e.printStackTrace();
-//                return -1;
-//            }
         }
 
         // trying get delimiters
