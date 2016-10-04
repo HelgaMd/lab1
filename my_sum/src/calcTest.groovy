@@ -25,7 +25,12 @@ class calcTest extends GroovyTestCase {
 
         assertEquals(test_add.add("//[;l;][hhh][,]\n1;l;2hhh3"), 6)
 
-        assertEquals(test_add.add("//[;l;]\n1;l;2;l;-3"), -1)
+        try {
+            test_add.add("//[;l;]\n1;l;2;l;-3");
+        }
+        catch (SubZero e){
+            assertEquals("Negatives not allowed. -3 ", e.message)
+        }
 
     }
 }

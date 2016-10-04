@@ -6,7 +6,12 @@ public class my_sum {
 
     public static void main(String[] args) {
         calc c = new calc();
-        int r = c.add("//[kk][;][,]\n1;3;3;1001");
-        System.out.println(r);
+        try {
+            int r = c.add("1\n1,3,3\n1001");
+            System.out.println(r);
+        }
+        catch (SubZero e){
+            e.printStackTrace();
+        }
     }
 }
