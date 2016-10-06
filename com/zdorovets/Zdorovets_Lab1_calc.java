@@ -7,9 +7,9 @@ class Zdorovets_Lab1_calc {
 		{			
 		    return 0;
 		}
-		else
+		else 
 		{		
-		    String[] numbers=string.split(",|\n");
+		    String[] numbers=string.split(",");
 		    if(numbers.length==0)
     		    throw new RuntimeException("Error: invalid data.");
 		    else 

@@ -28,16 +28,6 @@ public class Zdorovets_Lab1_calcTest {
 		org.junit.Assert.assertEquals(60,Zdorovets_Lab1_calc.Add("16,14,20,10"));
 	}
 	
-	@Test
-	public void testAddWithNewLines() {		
-		org.junit.Assert.assertEquals(60,Zdorovets_Lab1_calc.Add("16,14\n20\n10"));
-	}
-	
-	@Test(expected = NumberFormatException.class)
-	public void testAddWithNewLinesAndComma() {		
-		org.junit.Assert.assertEquals(60,Zdorovets_Lab1_calc.Add("16,14\n20,\n10"));
-	}
-	
 	@Test(expected = NumberFormatException.class)
 	public void testNumberFormatException() {		
 		Zdorovets_Lab1_calc.Add("1,a");	
