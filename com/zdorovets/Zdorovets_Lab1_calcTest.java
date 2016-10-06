@@ -33,13 +33,17 @@ public class Zdorovets_Lab1_calcTest {
 		org.junit.Assert.assertEquals(60,Zdorovets_Lab1_calc.Add("16,14\n20\n10"));
 	}
 	
-    @Test
-	public void testDelimiter() {
-	    org.junit.Assert.assertEquals(33, Zdorovets_Lab1_calc.Add("//;\n11;22"));
+	@Test(expected = NumberFormatException.class)
+	public void testAddWithNewLinesAndComma() {		
+		org.junit.Assert.assertEquals(60,Zdorovets_Lab1_calc.Add("16,14\n20,\n10"));
 	}
 	
 	@Test(expected = NumberFormatException.class)
 	public void testNumberFormatException() {		
 		Zdorovets_Lab1_calc.Add("1,a");	
+	}
+	@Test(expected = RuntimeException.class)
+	public void testRuntimeException() {		
+		Zdorovets_Lab1_calc.Add(",");	
 	}
 }
