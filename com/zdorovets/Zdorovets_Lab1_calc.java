@@ -6,11 +6,25 @@ class Zdorovets_Lab1_calc {
 	{
 	String delimiter=",|\n";
 	String numbersWithoutDelimiter=string;	
-	if (string.startsWith("//")) {
+	if (string.startsWith("//[")) {
+        int delimiterIndex=string.indexOf("//")+3,
+        	i=delimiterIndex,l=0;
+        delimiter="";
+        while(!string.substring(i,i+1).equals("]"))
+        {
+        	delimiter=delimiter+string.substring(i,i+1);
+        	i++;
+        	l++;
+        }
+        delimiter=string.substring(delimiterIndex,delimiterIndex+l);
+        numbersWithoutDelimiter=string.substring(string.indexOf("\n")+1);
+    }
+	else if (string.startsWith("//")) {
         int delimiterIndex=string.indexOf("//")+2;
         delimiter=string.substring(delimiterIndex,delimiterIndex+1);
         numbersWithoutDelimiter=string.substring(string.indexOf("\n")+1);
     }
+	
     return Add(numbersWithoutDelimiter, delimiter);
 	}
 	

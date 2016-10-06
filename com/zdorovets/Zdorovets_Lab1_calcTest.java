@@ -1,7 +1,7 @@
 package com.zdorovets;
 import static org.junit.Assert.*;
 import org.junit.Test; 
-
+ 
 public class Zdorovets_Lab1_calcTest {
 
 	@Test
@@ -36,6 +36,11 @@ public class Zdorovets_Lab1_calcTest {
     @Test
 	public void testDelimiter() {
 	    org.junit.Assert.assertEquals(33, Zdorovets_Lab1_calc.Add("//;\n11;22"));
+	}
+    
+    @Test
+	public void testLongDelimiter() {
+	    org.junit.Assert.assertEquals(6, Zdorovets_Lab1_calc.Add("//[---]\n1---2---3"));
 	}
     
     @Test(expected = RuntimeException.class)
