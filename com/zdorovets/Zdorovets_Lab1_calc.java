@@ -12,13 +12,13 @@ class Zdorovets_Lab1_calc {
 		    String[] numbers=string.split(",");
 		    if(numbers.length==0)
     		    throw new RuntimeException("Error: invalid data.");
-		    else 
+		    else if(numbers.length>2)
+		    	throw new RuntimeException("Error: too many arguments.");
+		    else if(numbers.length==1)
 		    {
-		    	int sum=0;
-		    	for(int i=0; i<numbers.length; i++)
-		    		sum+=Integer.parseInt(numbers[i]);
-		    	return sum;
+		    	return Integer.parseInt(numbers[0]);
 		    }
+		    else return Integer.parseInt(numbers[0])+Integer.parseInt(numbers[1]);
 		    
 		}
 	}

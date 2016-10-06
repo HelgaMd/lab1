@@ -2,6 +2,7 @@ package com.zdorovets;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+
 public class Zdorovets_Lab1_calcTest {
 
 	@Test
@@ -18,14 +19,9 @@ public class Zdorovets_Lab1_calcTest {
 		org.junit.Assert.assertEquals(34,Zdorovets_Lab1_calc.Add("16,18"));
 	}
 	
-	@Test
+	@Test(expected = RuntimeException.class)
 	public void testAddWithThreeArguments() {		
-		org.junit.Assert.assertEquals(50,Zdorovets_Lab1_calc.Add("16,14,20"));
-	}
-	
-	@Test
-	public void testAddWithFourArguments() {		
-		org.junit.Assert.assertEquals(60,Zdorovets_Lab1_calc.Add("16,14,20,10"));
+		Zdorovets_Lab1_calc.Add("16,14,20");
 	}
 	
 	@Test(expected = NumberFormatException.class)
