@@ -53,6 +53,11 @@ public class Zdorovets_Lab1_calcTest {
         org.junit.Assert.assertNotNull(exception);
         org.junit.Assert.assertEquals("Negatives not allowed: [-14, -9, -16]", exception.getMessage());
     }
+    
+    @Test
+    public final void testOver1000() {
+    	org.junit.Assert.assertEquals(1+1000+2, Zdorovets_Lab1_calc.Add("1,1000,1001,2000,2"));
+    }
 	
 	@Test(expected = NumberFormatException.class)
 	public void testNumberFormatException() {		

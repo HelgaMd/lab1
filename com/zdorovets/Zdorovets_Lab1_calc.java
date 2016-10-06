@@ -1,6 +1,6 @@
 package com.zdorovets; 
 import java.util.ArrayList;
-
+ 
 class Zdorovets_Lab1_calc {
 	public static int Add(String string)
 	{
@@ -25,12 +25,13 @@ class Zdorovets_Lab1_calc {
 		        	num=Integer.parseInt(number.trim());
 		        	if (num < 0)
 		        		negativeList.add(num);
-		            sum += num;
+		        	else if(num<=1000)
+		        		sum += num;
 		        }
-		    }
+		    }  
 		    if (negativeList.size() > 0) {
 		        throw new RuntimeException("Negatives not allowed: " + negativeList.toString());
-		    } 
+		    }
 		    return sum;
 	}
 
