@@ -1,9 +1,11 @@
-package com.zdorovets;
+package com.zdorovets; 
+import java.util.ArrayList;
+
 class Zdorovets_Lab1_calc {
 	public static int Add(String string)
 	{
 	String delimiter=",|\n";
-	String numbersWithoutDelimiter=string;
+	String numbersWithoutDelimiter=string;	
 	if (string.startsWith("//")) {
         int delimiterIndex=string.indexOf("//")+2;
         delimiter=string.substring(delimiterIndex,delimiterIndex+1);
@@ -16,11 +18,19 @@ class Zdorovets_Lab1_calc {
 	{			
 			int sum=0; 
 		    String[] numbers=string.split(delimiter);
+		    ArrayList<Integer> negativeList=new ArrayList<Integer>();
+		    int num;
 		    for (String number : numbers) {
 		        if (!number.trim().isEmpty()) {
-		            sum += Integer.parseInt(number.trim());
+		        	num=Integer.parseInt(number.trim());
+		        	if (num < 0)
+		        		negativeList.add(num);
+		            sum += num;
 		        }
 		    }
+		    if (negativeList.size() > 0) {
+		        throw new RuntimeException("Negatives not allowed: " + negativeList.toString());
+		    } 
 		    return sum;
 	}
 
