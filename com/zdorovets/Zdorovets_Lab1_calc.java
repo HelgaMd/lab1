@@ -5,21 +5,24 @@ class Zdorovets_Lab1_calc {
 	public static int Add(String string)
 	{
 	String delimiter=",|\n";
-	String numbersWithoutDelimiter=string;	
-	if (string.startsWith("//[")) {
-        int delimiterIndex=string.indexOf("//")+3,
-        	i=delimiterIndex,l=0;
-        delimiter="";
-        while(!string.substring(i,i+1).equals("]"))
+	String numbersWithoutDelimiter=string;
+	if(string.startsWith("//["))
+	    delimiter="";
+	while (string.startsWith("//[")) {
+        int delimiterIndex=string.indexOf("//")+3;
+        if(!delimiter.equals(""))
+        	delimiter=delimiter+"|";
+        delimiter=delimiter+string.substring(delimiterIndex,delimiterIndex+1);             
+        string=string.substring(delimiterIndex+2);        
+        if(string.startsWith("["))
         {
-        	delimiter=delimiter+string.substring(i,i+1);
-        	i++;
-        	l++;
+        	string="//"+string;        	
         }
-        delimiter=string.substring(delimiterIndex,delimiterIndex+l);
-        numbersWithoutDelimiter=string.substring(string.indexOf("\n")+1);
-    }
-	else if (string.startsWith("//")) {
+        else numbersWithoutDelimiter=string.substring(string.indexOf("\n")+1);
+	}
+        
+    
+	if (string.startsWith("//")) {
         int delimiterIndex=string.indexOf("//")+2;
         delimiter=string.substring(delimiterIndex,delimiterIndex+1);
         numbersWithoutDelimiter=string.substring(string.indexOf("\n")+1);
