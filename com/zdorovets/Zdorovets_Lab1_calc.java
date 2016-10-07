@@ -9,11 +9,17 @@ class Zdorovets_Lab1_calc {
 	if(string.startsWith("//["))
 	    delimiter="";
 	while (string.startsWith("//[")) {
-        int delimiterIndex=string.indexOf("//")+3;
+        int delimiterIndex=string.indexOf("//")+3,
+        	i=delimiterIndex,l=0;
         if(!delimiter.equals(""))
         	delimiter=delimiter+"|";
-        delimiter=delimiter+string.substring(delimiterIndex,delimiterIndex+1);             
-        string=string.substring(delimiterIndex+2);        
+        while(!string.substring(i,i+1).equals("]"))
+        {
+        	delimiter=delimiter+string.substring(i,i+1);
+        	i++;
+        	l++;
+        }  
+        string=string.substring(delimiterIndex+l+1);        
         if(string.startsWith("["))
         {
         	string="//"+string;        	

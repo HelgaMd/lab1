@@ -1,7 +1,7 @@
 package com.zdorovets;
 import static org.junit.Assert.*;
-import org.junit.Test;  
- 
+import org.junit.Test; 
+  
 public class Zdorovets_Lab1_calcTest {
 
 	@Test
@@ -46,7 +46,12 @@ public class Zdorovets_Lab1_calcTest {
     @Test
 	public void testTwoShortDelimiters() {
 	    org.junit.Assert.assertEquals(6, Zdorovets_Lab1_calc.Add("//[-][=]\n1-2=3"));
-	}   
+	}
+    
+    @Test
+	public void testTwoLongDelimiters() {
+	    org.junit.Assert.assertEquals(6, Zdorovets_Lab1_calc.Add("//[---][==]\n1---2==3"));
+	}
     
     @Test(expected = RuntimeException.class)
     public final void testNegativeException() {
