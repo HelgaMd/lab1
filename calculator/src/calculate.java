@@ -55,13 +55,8 @@ public class calculate {
                     && agregateBuff.length() < numbers.length())
                 return 0;
 
-            if (isNegative) {
-                System.out.print("negatives not allowed: ");
-                for(int ceils:negative)
-                    System.out.print(ceils+".");
-                System.out.println();
-                return 0;
-            }
+            if (isNegative)
+                throw new RuntimeException("Negatives not allowed: " + negative.toString());
         }
         return agregate;
     }
