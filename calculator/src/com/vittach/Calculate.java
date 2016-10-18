@@ -7,32 +7,39 @@ import java.util.StringTokenizer;
  * Created by VITTACH on 05.10.2016.
  */
 public class Calculate {
+    private int i= 2;
+    private String element;
+    private String agregateBuff = "";
+    private String tokenSymbols = "";
+
+    private int calc() {
+        while (true) {
+            if (i + 1 < element.length()) {
+                if (element.charAt(i)=='\n'
+                        && element.charAt(i + 1) > '0'
+                        && element.charAt(i + 1) < '9')
+                    break;
+            } else if(tokenSymbols.length()== 0)
+                return 0;
+            else
+                break;
+            tokenSymbols += element.charAt(i++);
+        }
+        element = element.substring(i + 1);
+        return 1;
+    }
+
     public int add(String inputs) throws NegativeException {
-        int i= 2;
         int ceil;
-        int agregate= 0;
-        String element = inputs;
-        String agregateBuff = "";
-        String tokenSymbols = "";
+        element = inputs;
+        int agregate = 0;
         boolean isNegative = false;
         ArrayList<Integer> negative = new ArrayList<>();
 
         if (element.length() > 0) {
             if (element.charAt(0) == '/'
                     && element.charAt(1) == '/') {
-                while (true) {
-                    if (i + 1 < element.length()) {
-                        if (element.charAt(i)=='\n'
-                                && element.charAt(i + 1) > '0'
-                                && element.charAt(i + 1) < '9')
-                            break;
-                    } else if(tokenSymbols.length()== 0)
-                        return 0;
-                    else
-                        break;
-                    tokenSymbols += element.charAt(i++);
-                }
-                element = element.substring(i + 1);
+                if(calc() == 0)return 0;
             }
             else
                 tokenSymbols = "\n,";
