@@ -15,12 +15,7 @@ class SubZero extends Exception {
 
 class Calc {
 
-    public int add(String numbers) throws SubZero{
-        // if empty str - return 0
-        if (numbers.isEmpty()){
-            return 0;
-        }
-        // if we have negative numbers...
+    private void throw_negative_error(String numbers) throws SubZero{
         Matcher m = Pattern.compile("(-\\d+)").matcher(numbers);
         if (m.find()){
             String str =  "Negatives not allowed. "+m.group(1)+" ";
@@ -28,9 +23,27 @@ class Calc {
                 str += m.group(1)+" ";
             throw new SubZero(str);
         }
+    }
+
+    public int add(String numbers) throws SubZero{
+        // if empty str - return 0
+        if (numbers.isEmpty()){
+            return 0;
+        }
+//        // if we have negative numbers...
+//        Matcher m = Pattern.compile("(-\\d+)").matcher(numbers);
+//        if (m.find()){
+//            String str =  "Negatives not allowed. "+m.group(1)+" ";
+//            while (m.find())
+//                str += m.group(1)+" ";
+//            throw new SubZero(str);
+//        }
+
+        //checking on negative numbers...
+        this.throw_negative_error(numbers);
 
         // trying get delimiters
-        m = Pattern.compile("\\[([^\\]]*)\\]").matcher(numbers);
+        Matcher m = Pattern.compile("\\[([^\\]]*)\\]").matcher(numbers);
         String delimiters = "";
         while (m.find())
             delimiters += m.group(1)+"|";
