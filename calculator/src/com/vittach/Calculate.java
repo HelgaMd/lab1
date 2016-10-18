@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
  * Created by VITTACH on 05.10.2016.
  */
 public class Calculate {
-    public int Add(String element) {
+    public int Add(String input) {
         int i= 2;
         int ceil;
         int agregate= 0;
@@ -16,35 +16,35 @@ public class Calculate {
         boolean isNegative = false;
         ArrayList<Integer> negative = new ArrayList<>();
 
-        if (element.length() > 0) {
-            if (element.charAt(0) == '/'
-                    && element.charAt(1) == '/') {
+        if (input.length() > 0) {
+            if (input.charAt(0) == '/'
+                    && input.charAt(1) == '/') {
                 while (true) {
-                    if (i + 1 < element.length()) {
-                        if (element.charAt(i)=='\n'
-                                && element.charAt(i + 1) > '0'
-                                && element.charAt(i + 1) < '9')
+                    if (i + 1 < input.length()) {
+                        if (input.charAt(i)=='\n'
+                                && input.charAt(i + 1) > '0'
+                                && input.charAt(i + 1) < '9')
                             break;
                     } else if(tokenSymbols.length()== 0)
                         return 0;
                     else
                         break;
-                    tokenSymbols += element.charAt(i++);
+                    tokenSymbols += input.charAt(i++);
                 }
-                element = element.substring(i + 1);
+                input = input.substring(i + 1);
             }
             else
                 tokenSymbols = "\n,";
 
             StringTokenizer strTok;
-            strTok = new StringTokenizer(element, tokenSymbols);
+            strTok = new StringTokenizer(input, tokenSymbols);
             int countOfToken;
             countOfToken=strTok.countTokens();
 
             while (strTok.hasMoreElements()) {
-                String strTokEl=strTok.nextElement().toString();
+                String tokens=strTok.nextElement().toString();
 
-                ceil = Integer.parseInt(strTokEl);
+                ceil = Integer.parseInt(tokens);
                 if (ceil < 0) {
                     negative.add(ceil);
                     isNegative= true;
@@ -56,7 +56,7 @@ public class Calculate {
             }
 
             if (countOfToken == 1
-                    && agregateBuff.length() < element.length())
+                    && agregateBuff.length() < input.length())
                 return 0;
 
             if (isNegative)
