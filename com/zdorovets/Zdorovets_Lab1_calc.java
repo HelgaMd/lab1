@@ -1,46 +1,56 @@
 package com.zdorovets; 
 import java.util.ArrayList;
- 
+class NegativeException extends Exception
+{
+	private static final long serialVersionUID = 1L;
+	public NegativeException(String message)
+	{
+		super(message);
+	}
+}
 class Zdorovets_Lab1_calc {
-	public static int Add(String string)
+	
+	public static int add(String input) throws NumberFormatException, NegativeException
 	{
 	String delimiter=",|\n";
-	String numbersWithoutDelimiter=string;
-	if(string.startsWith("//["))
+	String numbersWithoutDelimiter=input;
+	if(input.startsWith("//["))
 	    delimiter="";
-	while (string.startsWith("//[")) {
-        int delimiterIndex=string.indexOf("//")+3,
-        	i=delimiterIndex,l=0;
-        if(!delimiter.equals(""))
+	while (input.startsWith("//[")) {
+        int delimiterIndex,
+        	i,
+        	l;
+        delimiterIndex=input.indexOf("//")+3;
+        i=delimiterIndex;
+        l=0;
+        if(!"".equals(delimiter))
         	delimiter=delimiter+"|";
-        while(!string.substring(i,i+1).equals("]"))
+        while(!input.substring(i,i+1).equals("]"))
         {
-        	delimiter=delimiter+string.substring(i,i+1);
+        	delimiter=delimiter+input.substring(i,i+1);
         	i++;
         	l++;
         }  
-        string=string.substring(delimiterIndex+l+1);        
-        if(string.startsWith("["))
+        input=input.substring(delimiterIndex+l+1);        
+        if(input.startsWith("["))
         {
-        	string="//"+string;        	
+        	input="//"+input;        	
         }
-        else numbersWithoutDelimiter=string.substring(string.indexOf("\n")+1);
+        else numbersWithoutDelimiter=input.substring(input.indexOf("\n")+1);
 	}
         
-    
-	if (string.startsWith("//")) {
-        int delimiterIndex=string.indexOf("//")+2;
-        delimiter=string.substring(delimiterIndex,delimiterIndex+1);
-        numbersWithoutDelimiter=string.substring(string.indexOf("\n")+1);
+	if (input.startsWith("//")) {
+        int delimiterIndex=input.indexOf("//")+2;
+        delimiter=input.substring(delimiterIndex,delimiterIndex+1);
+        numbersWithoutDelimiter=input.substring(input.indexOf("\n")+1);
     }
-	
-    return Add(numbersWithoutDelimiter, delimiter);
+    return add(numbersWithoutDelimiter, delimiter);
 	}
-	
-	public static int Add(String string,String delimiter) throws NumberFormatException,RuntimeException
+	 
+	public static int add(String input,String delimiter) throws NumberFormatException,NegativeException
 	{			
 			int sum=0; 
-		    String[] numbers=string.split(delimiter);
+		    String[] numbers=input.split(delimiter);
 		    ArrayList<Integer> negativeList=new ArrayList<Integer>();
 		    int num;
 		    for (String number : numbers) {
@@ -53,7 +63,7 @@ class Zdorovets_Lab1_calc {
 		        }
 		    }  
 		    if (negativeList.size() > 0) {
-		        throw new RuntimeException("Negatives not allowed: " + negativeList.toString());
+		        throw new NegativeException("Negatives not allowed: " + negativeList.toString());
 		    }
 		    return sum;
 	}

@@ -1,81 +1,81 @@
 package com.zdorovets;
-import static org.junit.Assert.*;
+import org.junit.Assert;
 import org.junit.Test; 
   
 public class Zdorovets_Lab1_calcTest {
 
 	@Test
-	public void testAddWithZeroArgs() {
-		org.junit.Assert.assertEquals(0,Zdorovets_Lab1_calc.Add(""));
+	public void testAddWithZeroArgs() throws NumberFormatException, NegativeException {
+		Assert.assertEquals(0,Zdorovets_Lab1_calc.add(""));
 	}
 	@Test
-	public void testAddWithOneArgument() {
-		org.junit.Assert.assertEquals(10,Zdorovets_Lab1_calc.Add("10"));
+	public void testAddWithOneArgument() throws NumberFormatException, NegativeException {
+		Assert.assertEquals(10,Zdorovets_Lab1_calc.add("10"));
 	}
 		
 	@Test
-	public void testAddWithTwoArguments() {		
-		org.junit.Assert.assertEquals(34,Zdorovets_Lab1_calc.Add("16,18"));
+	public void testAddWithTwoArguments() throws NumberFormatException, NegativeException {		
+		Assert.assertEquals(34,Zdorovets_Lab1_calc.add("16,18"));
 	}
 	
 	@Test
-	public void testAddWithThreeArguments() {		
-		org.junit.Assert.assertEquals(50,Zdorovets_Lab1_calc.Add("16,14,20"));
+	public void testAddWithThreeArguments() throws NumberFormatException, NegativeException {		
+		Assert.assertEquals(50,Zdorovets_Lab1_calc.add("16,14,20"));
 	}
 	
 	@Test
-	public void testAddWithFourArguments() {		
-		org.junit.Assert.assertEquals(60,Zdorovets_Lab1_calc.Add("16,14,20,10"));
+	public void testAddWithFourArguments() throws NumberFormatException, NegativeException {		
+		Assert.assertEquals(60,Zdorovets_Lab1_calc.add("16,14,20,10"));
 	}
 	
 	@Test
-	public void testAddWithNewLines() {		
-		org.junit.Assert.assertEquals(60,Zdorovets_Lab1_calc.Add("16,14\n20\n10"));
+	public void testAddWithNewLines() throws NumberFormatException, NegativeException {		
+		Assert.assertEquals(60,Zdorovets_Lab1_calc.add("16,14\n20\n10"));
 	}
 	
     @Test
-	public void testOneShortDelimiter() {
-	    org.junit.Assert.assertEquals(33, Zdorovets_Lab1_calc.Add("//;\n11;22"));
+	public void testOneShortDelimiter() throws NumberFormatException, NegativeException {
+	    Assert.assertEquals(33, Zdorovets_Lab1_calc.add("//;\n11;22"));
 	}
     
     @Test
-	public void testOneLongDelimiter() {
-	    org.junit.Assert.assertEquals(6, Zdorovets_Lab1_calc.Add("//[---]\n1---2---3"));
+	public void testOneLongDelimiter() throws NumberFormatException, NegativeException {
+	    Assert.assertEquals(6, Zdorovets_Lab1_calc.add("//[---]\n1---2---3"));
 	}
     
     @Test
-	public void testTwoShortDelimiters() {
-	    org.junit.Assert.assertEquals(6, Zdorovets_Lab1_calc.Add("//[-][=]\n1-2=3"));
+	public void testTwoShortDelimiters() throws NumberFormatException, NegativeException {
+	    Assert.assertEquals(6, Zdorovets_Lab1_calc.add("//[-][=]\n1-2=3"));
 	}
     
     @Test
-	public void testTwoLongDelimiters() {
-	    org.junit.Assert.assertEquals(6, Zdorovets_Lab1_calc.Add("//[---][==]\n1---2==3"));
+	public void testTwoLongDelimiters() throws NumberFormatException, NegativeException {
+	    Assert.assertEquals(6, Zdorovets_Lab1_calc.add("//[---][==]\n1---2==3"));
 	}
     
-    @Test(expected = RuntimeException.class)
-    public final void testNegativeException() {
-    	Zdorovets_Lab1_calc.Add("3,-6,15,18,46,33");
+    @Test(expected = NegativeException.class)
+    public final void testNegativeException() throws NumberFormatException, NegativeException {
+			Zdorovets_Lab1_calc.add("3,-6,15,18,46,33");
     }
     @Test
     public final void testCorrectNegativeList() {
-        RuntimeException exception = null;
+    	NegativeException exception = null;
         try {
-        	Zdorovets_Lab1_calc.Add("3,-14,5,-9,25,-16");
-        } catch (RuntimeException e) {
+        	Zdorovets_Lab1_calc.add("3,-14,5,-9,25,-16");
+        } catch (NegativeException e) {
             exception = e;
         }
-        org.junit.Assert.assertNotNull(exception);
-        org.junit.Assert.assertEquals("Negatives not allowed: [-14, -9, -16]", exception.getMessage());
+        Assert.assertNotNull(exception);
+        Assert.assertEquals("Negatives not allowed: [-14, -9, -16]", exception.getMessage());
     }
     
     @Test
-    public final void testOver1000() {
-    	org.junit.Assert.assertEquals(1+1000+2, Zdorovets_Lab1_calc.Add("1,1000,1001,2000,2"));
+    public final void testOver1000() throws NumberFormatException, NegativeException {
+    	Assert.assertEquals(1+1000+2, Zdorovets_Lab1_calc.add("1,1000,1001,2000,2"));
     }
 	
 	@Test(expected = NumberFormatException.class)
-	public void testNumberFormatException() {		
-		Zdorovets_Lab1_calc.Add("1,a");	
+	public void testNumberFormatException() throws NumberFormatException, NegativeException {		
+			Zdorovets_Lab1_calc.add("1,a");
 	}
 }
