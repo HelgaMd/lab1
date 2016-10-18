@@ -6,14 +6,6 @@ import java.util.StringTokenizer;
 /**
  * Created by VITTACH on 05.10.2016.
  */
-class NegativeException extends Exception
-{
-    private static final long serialVersionUID = 1L;
-    public NegativeException(String message) {
-        super(message);
-    }
-}
-
 public class Calculate {
     public int add(String inputs) throws NegativeException {
         int i= 2;
