@@ -6,8 +6,16 @@ import java.util.StringTokenizer;
 /**
  * Created by VITTACH on 05.10.2016.
  */
+class NegativeException extends Exception
+{
+    private static final long serialVersionUID = 1L;
+    public NegativeException(String message) {
+        super(message);
+    }
+}
+
 public class Calculate {
-    public int Add(String inputs) {
+    public int add(String inputs) throws NegativeException {
         int i= 2;
         int ceil;
         int agregate= 0;
@@ -61,7 +69,7 @@ public class Calculate {
                 return 0;
 
             if (isNegative)
-                throw new RuntimeException("Negatives not allowed: " + negative.toString());
+                throw new NegativeException("Negatives not allowed: " + negative.toString());
         }
         return agregate;
     }
