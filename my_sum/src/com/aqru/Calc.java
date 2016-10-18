@@ -1,4 +1,4 @@
-import java.util.Arrays;
+package com.aqru;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -13,9 +13,9 @@ class SubZero extends Exception {
     }
 }
 
-class calc {
+class Calc {
 
-    int add(String numbers) throws SubZero{
+    public int add(String numbers) throws SubZero{
         // if empty str - return 0
         if (numbers.isEmpty()){
             return 0;
