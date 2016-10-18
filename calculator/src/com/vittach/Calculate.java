@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
  * Created by VITTACH on 05.10.2016.
  */
 public class Calculate {
-    public int Add(String input) {
+    public int Add(String fuckingCodacy) {
         int i= 2;
         int ceil;
         int agregate= 0;
@@ -16,28 +16,28 @@ public class Calculate {
         boolean isNegative = false;
         ArrayList<Integer> negative = new ArrayList<>();
 
-        if (input.length() > 0) {
-            if (input.charAt(0) == '/'
-                    && input.charAt(1) == '/') {
+        if (fuckingCodacy.length() > 0) {
+            if (fuckingCodacy.charAt(0) == '/'
+                    && fuckingCodacy.charAt(1) == '/') {
                 while (true) {
-                    if (i + 1 < input.length()) {
-                        if (input.charAt(i)=='\n'
-                                && input.charAt(i + 1) > '0'
-                                && input.charAt(i + 1) < '9')
+                    if (i + 1 < fuckingCodacy.length()) {
+                        if (fuckingCodacy.charAt(i)=='\n'
+                                && fuckingCodacy.charAt(i + 1) > '0'
+                                && fuckingCodacy.charAt(i + 1) < '9')
                             break;
                     } else if(tokenSymbols.length()== 0)
                         return 0;
                     else
                         break;
-                    tokenSymbols += input.charAt(i++);
+                    tokenSymbols += fuckingCodacy.charAt(i++);
                 }
-                input = input.substring(i + 1);
+                fuckingCodacy = fuckingCodacy.substring(i +1);
             }
             else
                 tokenSymbols = "\n,";
 
             StringTokenizer strTok;
-            strTok = new StringTokenizer(input, tokenSymbols);
+            strTok = new StringTokenizer(fuckingCodacy, tokenSymbols);
             int countOfToken;
             countOfToken=strTok.countTokens();
 
@@ -56,7 +56,7 @@ public class Calculate {
             }
 
             if (countOfToken == 1
-                    && agregateBuff.length() < input.length())
+                    && agregateBuff.length() < fuckingCodacy.length())
                 return 0;
 
             if (isNegative)

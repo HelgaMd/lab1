@@ -57,7 +57,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/vittach/Calculate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.5863192">
-              <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+              <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -666,7 +666,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/vittach/Calculate.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5863192">
-          <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
+          <caret line="33" column="59" selection-start-line="33" selection-start-column="59" selection-end-line="33" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
