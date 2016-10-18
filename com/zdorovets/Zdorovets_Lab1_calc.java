@@ -10,16 +10,17 @@ class NegativeException extends Exception
 }
 class Zdorovets_Lab1_calc {
 	
-	public static int add(String input) throws NumberFormatException, NegativeException
+	public static int add(String input_string) throws NumberFormatException, NegativeException
 	{
+	String input=input_string;
 	String delimiter=",|\n";
 	String numbersWithoutDelimiter=input;
 	if(input.startsWith("//["))
 	    delimiter="";
+	int delimiterIndex,
+        i,
+        l;
 	while (input.startsWith("//[")) {
-        int delimiterIndex,
-        	i,
-        	l;
         delimiterIndex=input.indexOf("//")+3;
         i=delimiterIndex;
         l=0;
@@ -40,8 +41,8 @@ class Zdorovets_Lab1_calc {
 	}
         
 	if (input.startsWith("//")) {
-        int delimiterIndex=input.indexOf("//")+2;
-        delimiter=input.substring(delimiterIndex,delimiterIndex+1);
+        int delimIndex=input.indexOf("//")+2;
+        delimiter=input.substring(delimIndex,delimIndex+1);
         numbersWithoutDelimiter=input.substring(input.indexOf("\n")+1);
     }
     return add(numbersWithoutDelimiter, delimiter);
