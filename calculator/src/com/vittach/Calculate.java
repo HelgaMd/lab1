@@ -1,39 +1,43 @@
+package com.vittach;
+
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 /**
  * Created by VITTACH on 05.10.2016.
  */
-public class calculate {
-    public int Add(String numbers) {
+public class Calculate {
+    public int Add(String element) {
+        int i= 2;
+        int ceil;
+        int agregate= 0;
         String agregateBuff = "";
         String tokenSymbols = "";
         boolean isNegative = false;
-        int agregate= 0,i= 2, ceil;
-        ArrayList<Integer> negative=new ArrayList<>();
+        ArrayList<Integer> negative = new ArrayList<>();
 
-        if (numbers.length() > 0) {
-            if (numbers.charAt(0) == '/'
-                    && numbers.charAt(1) == '/') {
+        if (element.length() > 0) {
+            if (element.charAt(0) == '/'
+                    && element.charAt(1) == '/') {
                 while (true) {
-                    if (i + 1 < numbers.length()) {
-                        if (numbers.charAt(i)=='\n'
-                                && numbers.charAt(i + 1) > '0'
-                                && numbers.charAt(i + 1) < '9')
+                    if (i + 1 < element.length()) {
+                        if (element.charAt(i)=='\n'
+                                && element.charAt(i + 1) > '0'
+                                && element.charAt(i + 1) < '9')
                             break;
                     } else if(tokenSymbols.length()== 0)
                         return 0;
                     else
                         break;
-                    tokenSymbols += numbers.charAt(i++);
+                    tokenSymbols += element.charAt(i++);
                 }
-                numbers = numbers.substring(i + 1);
+                element = element.substring(i + 1);
             }
             else
                 tokenSymbols = "\n,";
 
             StringTokenizer strTok;
-            strTok = new StringTokenizer(numbers, tokenSymbols);
+            strTok = new StringTokenizer(element, tokenSymbols);
             int countOfToken;
             countOfToken=strTok.countTokens();
 
@@ -52,7 +56,7 @@ public class calculate {
             }
 
             if (countOfToken == 1
-                    && agregateBuff.length() < numbers.length())
+                    && agregateBuff.length() < element.length())
                 return 0;
 
             if (isNegative)

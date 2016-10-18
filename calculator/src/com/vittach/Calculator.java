@@ -1,9 +1,11 @@
+package com.vittach;
+
 /**
  * Created by VITTACH on 05.10.2016.
  */
-public class calculator {
+public class Calculator {
     public static void main(String[] argv) {
-        calculate calc= new calculate();
+        Calculate calc= new Calculate();
 
         System.out.println("Zharikov Vitaliy. Examples:");
         System.out.println("//;\\n,*\\n1;2,**4 = " + calc.Add("//;\n,*\n1;2,**4"));
