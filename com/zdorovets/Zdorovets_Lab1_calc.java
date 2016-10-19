@@ -3,6 +3,7 @@ import java.util.ArrayList;
 /*
  * NegativeException class
  * @author Evgeny Zdorovets
+ * @version 9.5
  * created on 04/10/16
  */
 class NegativeException extends Exception {
@@ -14,10 +15,17 @@ class NegativeException extends Exception {
 /*
  * Calculator class
  * @author Evgeny Zdorovets
+ * @version 9.5
  * created on 04/10/16
  */
 class Zdorovets_Lab1_calc {
-
+    /*
+     * Метод add(String input_string)
+     * Нужен в случае со сложным(-и) разделителями для выделения разделителя и самого арифм. выражения
+     * Если не используются сложные разделители, то по умолчанию - "," и "\n"
+     * @param input_string входная строка, состоящая из разделителя(-ей) и выражения 
+     * @return сумма двух чисел, либо исключение  
+     */
     public static int add(String input_string) throws NumberFormatException, NegativeException {
         String input = input_string;
         String delimiter = ",|\n"; // разделитель по умолчанию
@@ -32,8 +40,8 @@ class Zdorovets_Lab1_calc {
             i = delimiterIndex;
             l = 0;
             if (!"".equals(delimiter))
-                delimiter = delimiter + "|";
-            while (!input.substring(i, i + 1).equals("]")) { 
+                delimiter = delimiter + "|"; // добавление символа, разделяющего разделители 
+            while (!input.substring(i, i + 1).equals("]")) { // пока не конец разделителя
                 delimiter = delimiter + input.substring(i, i + 1); // добавление к разделителю
                 												   // текущего символа
                 i++;
@@ -54,7 +62,13 @@ class Zdorovets_Lab1_calc {
         }
         return add(numbersWithoutDelimiter, delimiter);
     }
-
+    /*
+     * Метод add(String input, String delimiter)
+     * Нужен для вычисления суммы
+     * @param input входная строка
+     * @param delimiter входной разделитель
+     * @return сумма двух чисел, либо исключение 
+     */
     public static int add(String input, String delimiter) throws NumberFormatException, NegativeException {
         int sum = 0;
         String[] numbers = input.split(delimiter);

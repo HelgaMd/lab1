@@ -4,6 +4,7 @@ import org.junit.Test;
 /*
  * Unit tests
  * @author Evgeny Zdorovets
+ * @version 9.5
  * created on 04/10/16
  */
 public class Zdorovets_Lab1_calcTest {
