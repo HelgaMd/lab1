@@ -13,3 +13,4 @@ hs_err_pid*
 .idea/
 lab1.iml
 com.aqru.My_sum/com.aqru.My_sum.iml
+/my_sum/add.iml
