@@ -1,13 +1,19 @@
 package com.vittach;
 
 /**
- * Created by VITTACH on 05.10.2016.
+ * Created by VITTACH on 05.10.2016
+ * @author Zharikov Vitaliy- vk.com
+ * @version 0.3.2
  */
 public class Calculator {
+    /**
+     *
+     * @param argv
+     */
     public static void main(String[] argv) {
         Calculate calc= new Calculate();
 
-        System.out.println("Zharikov Vitaliy. Examples:");
+        System.out.println("ZharikovVitali");
         try {
             System.out.println("//;\\n,*\\n1;2,**4= " + calc.add("//;\n,*\n1;2,**4"));
             System.out.println("//;*\\n1;2***1000 = " + calc.add("//;*\n1;2***1000"));

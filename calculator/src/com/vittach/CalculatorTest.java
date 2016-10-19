@@ -4,12 +4,18 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 /**
- * Created by VITTACH on 06.10.2016.
+ * Created by VITTACH on 06.10.2016
+ * @author Zharikov Vitaliy- vk.com
+ * @version 0.3.2
  */
 
 public class CalculatorTest {
     // @Test - это аннотация, которая обозначает, что метод должен быть вызван для тестирования
 
+    /**
+     * Unit test
+     * @throws NegativeException
+     */
     @Test
     public void addTestNo0result() throws NegativeException {
         Calculate c = new Calculate();
@@ -17,6 +23,10 @@ public class CalculatorTest {
         assertEquals(c.add(""), 0);
     }
 
+    /**
+     * Unit test
+     * @throws NegativeException
+     */
     @Test
     public void addTestThreeResult3() throws NegativeException {
         Calculate c = new Calculate();
@@ -24,6 +34,10 @@ public class CalculatorTest {
         assertEquals(c.add("3"), 3);
     }
 
+    /**
+     * Unit test
+     * @throws NegativeException
+     */
     @Test
     @Ignore
     // Обратим внимание на аннотацию Ignore - она говорит, что данный тест будет проигнорирован
@@ -33,6 +47,10 @@ public class CalculatorTest {
         assertEquals(c.add("2\n"), 8);
     }
 
+    /**
+     * Unit test
+     * @throws NegativeException
+     */
     @Test
     public void addTestTwoSlashN7Result9() throws NegativeException {
         Calculate c = new Calculate();
@@ -40,6 +58,10 @@ public class CalculatorTest {
         assertEquals(c.add("2\n7"), 9);
     }
 
+    /**
+     * Unit test
+     * @throws NegativeException
+     */
     @Test
     public void addTestOneComaTwoResult3() throws NegativeException {
         Calculate c = new Calculate();
@@ -47,6 +69,10 @@ public class CalculatorTest {
         assertEquals(c.add("1,2"), 3);
     }
 
+    /**
+     * Unit test
+     * @throws NegativeException
+     */
     @Test
     public void addTestSlashslashsemicolondotdotbackslashn8semicolon1000dotdotResult1008() throws NegativeException {
         Calculate c = new Calculate();
@@ -54,6 +80,10 @@ public class CalculatorTest {
         assertEquals(c.add("//;..\n8;1000.."), 1008);
     }
 
+    /**
+     * Unit test
+     * @throws NegativeException
+     */
     @Test
     public void addTestSlashslashsemicolonbackslashn8semicolonsemicolon1001dotdotResult8() throws NegativeException {
         Calculate c = new Calculate();

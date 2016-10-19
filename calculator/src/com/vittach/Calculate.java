@@ -4,55 +4,68 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 /**
- * Created by VITTACH on 05.10.2016.
+ * Created by VITTACH on 05.10.2016
+ * @author Zharikov Vitaliy- vk.com
+ * @version 0.3.2
  */
 public class Calculate {
     private int i= 2;
-    private String element;
+    private String input;
     private String agregateBuff = "";
     private String tokenSymbols = "";
 
-    private int calc() {
+    /**
+     * for support changing a delimiter
+     * @return
+     */
+    private boolean multiDelimiter() {
         while (true) {
-            if (i + 1 < element.length()) {
-                if (element.charAt(i)=='\n'
-                        && element.charAt(i + 1) > '0'
-                        && element.charAt(i + 1) < '9')
+            if (i + 1 < input.length()) {
+                if (input.charAt(i)=='\n'
+                        && input.charAt(i + 1) > '0'
+                        && input.charAt(i + 1) < '9')
                     break;
-            } else if(tokenSymbols.length()== 0)
-                return 0;
+            }
+            else if(tokenSymbols.length()== 0)
+                return false;
             else
                 break;
-            tokenSymbols += element.charAt(i++);
+            tokenSymbols += input.charAt(i++);
         }
-        element = element.substring(i + 1);
-        return 1;
+        input = input.substring(i + 1);
+        return true;
     }
 
-    public int add(String inputs) throws NegativeException {
+    /**
+     * basic method of simple String calculator
+     * @param numbers
+     * @return
+     * @throws NegativeException
+     */
+    public int add(String numbers) throws NegativeException {
         int ceil;
-        element = inputs;
-        int agregate = 0;
+        input = numbers;
+        int agregate= 0;// result of this method
         boolean isNegative = false;
         ArrayList<Integer> negative = new ArrayList<>();
 
-        if (element.length() > 0) {
-            if (element.charAt(0) == '/'
-                    && element.charAt(1) == '/') {
-                if(calc() == 0)return 0;
+        if (input.length() > 0) {
+            if (input.charAt(0) == '/'
+                    && input.charAt(1) == '/') {
+                if(!multiDelimiter())return 0;
             }
             else
-                tokenSymbols = "\n,";
+                tokenSymbols = "\n,"; // set tokens by default
 
             StringTokenizer strTok;
-            strTok = new StringTokenizer(element, tokenSymbols);
+            strTok = new StringTokenizer(input, tokenSymbols);
             int countOfToken;
             countOfToken=strTok.countTokens();
 
             while (strTok.hasMoreElements()) {
                 String strTokEl=strTok.nextElement().toString();
 
-                ceil = Integer.parseInt(strTokEl);
+                ceil=Integer.parseInt(strTokEl);
                 if (ceil < 0) {
                     negative.add(ceil);
                     isNegative= true;
@@ -64,7 +77,7 @@ public class Calculate {
             }
 
             if (countOfToken == 1
-                    && agregateBuff.length() < element.length())
+                    && agregateBuff.length() < input.length())
                 return 0;
 
             if (isNegative)
