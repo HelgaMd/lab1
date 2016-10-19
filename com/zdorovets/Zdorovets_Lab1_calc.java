@@ -20,31 +20,31 @@ class Zdorovets_Lab1_calc {
 
     public static int add(String input_string) throws NumberFormatException, NegativeException {
         String input = input_string;
-        String delimiter = ",|\n"; // разделитель по умолчанию
+        String delimiter = ",|\n"; // СЂР°Р·РґРµР»РёС‚РµР»СЊ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
         String numbersWithoutDelimiter = input;
         if (input.startsWith("//["))
-            delimiter = ""; // если есть разделители со скобками, то начальный разделитель равен ""
+            delimiter = ""; // РµСЃР»Рё РµСЃС‚СЊ СЂР°Р·РґРµР»РёС‚РµР»Рё СЃРѕ СЃРєРѕР±РєР°РјРё, С‚Рѕ РЅР°С‡Р°Р»СЊРЅС‹Р№ СЂР°Р·РґРµР»РёС‚РµР»СЊ СЂР°РІРµРЅ ""
         int delimiterIndex,
         i,
         l;
-        while (input.startsWith("//[")) { //пока есть разделители
-            delimiterIndex = input.indexOf("//") + 3;
+        while (input.startsWith("//[")) { //РїРѕРєР° РµСЃС‚СЊ СЂР°Р·РґРµР»РёС‚РµР»Рё
+            delimiterIndex = input.indexOf("//") + 3; // РІС‹РґРµР»СЏРµС‚СЃСЏ РёРЅРґРµРєСЃ, СЃР»РµРґСѓСЋС‰РёР№ Р·Р° "//"
             i = delimiterIndex;
             l = 0;
             if (!"".equals(delimiter))
                 delimiter = delimiter + "|";
             while (!input.substring(i, i + 1).equals("]")) { 
-                delimiter = delimiter + input.substring(i, i + 1); // добавление к разделителю
-                												   // текущего символа
+                delimiter = delimiter + input.substring(i, i + 1); // РґРѕР±Р°РІР»РµРЅРёРµ Рє СЂР°Р·РґРµР»РёС‚РµР»СЋ
+                												   // С‚РµРєСѓС‰РµРіРѕ СЃРёРјРІРѕР»Р°
                 i++;
                 l++;
             }
-            input = input.substring(delimiterIndex + l + 1); // удаление очередного разделителя 
-                                                             //из анализируемой строки 
-            if (input.startsWith("[")) { // если есть еще разделители
-                input = "//" + input; // то прибавляем "//" для будущего анализа
-            } else numbersWithoutDelimiter = input.substring(input.indexOf("\n") + 1); // иначе выделяется 
-                                                                                       // строка без разделителя 
+            input = input.substring(delimiterIndex + l + 1); // СѓРґР°Р»РµРЅРёРµ РѕС‡РµСЂРµРґРЅРѕРіРѕ СЂР°Р·РґРµР»РёС‚РµР»СЏ  
+                                                             // РёР· Р°РЅР°Р»РёР·РёСЂСѓРµРјРѕР№ СЃС‚СЂРѕРєРё 
+            if (input.startsWith("[")) { // РµСЃР»Рё РµСЃС‚СЊ РµС‰Рµ СЂР°Р·РґРµР»РёС‚РµР»Рё
+                input = "//" + input; // С‚Рѕ РїСЂРёР±Р°РІР»СЏРµРј "//" РґР»СЏ Р±СѓРґСѓС‰РµРіРѕ Р°РЅР°Р»РёР·Р°
+            } else numbersWithoutDelimiter = input.substring(input.indexOf("\n") + 1); // РёРЅР°С‡Рµ РІС‹РґРµР»СЏРµС‚СЃСЏ  
+                                                                                       // СЃС‚СЂРѕРєР° Р±РµР· СЂР°Р·РґРµР»РёС‚РµР»СЏ  
         }
 
         if (input.startsWith("//")) {
