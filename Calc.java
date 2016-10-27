@@ -54,7 +54,7 @@ public class Calc {
     }
 
     //calc numbers
-    public int Add (String numbers) throws UnderTheZero{
+    public int add (String numbers) throws UnderTheZero{
         //create int for our result
         int result = 0;
 
