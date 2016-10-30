@@ -112,16 +112,14 @@ public class SimpleCalc {
 			return res;
 		}
 		
-		if(inputStr.length() > 1) {
-			if(inputStr.substring(0, 2).equalsIgnoreCase("//")) {
-				if(inputStr.charAt(2) == '[') {
-					inputStr = inputStr.substring(2);
-					mulDelimiters();
-				}
-				else {
-					inputStr = inputStr.substring(2);
-					addDelimiter();
-				}
+		if( inputStr.length() > 1 && inputStr.substring(0, 2).equalsIgnoreCase("//")) {
+			if(inputStr.charAt(2) == '[') {
+				inputStr = inputStr.substring(2);
+				mulDelimiters();
+			}
+			else {
+				inputStr = inputStr.substring(2);
+				addDelimiter();
 			}
 		}
 		
@@ -136,7 +134,7 @@ public class SimpleCalc {
 				int parseVal = Integer.parseInt(value);
 				if(parseVal < 0)
 					negValues.add(value);
-				if(parseVal < 1000 && parseVal > 0)
+				if(parseVal <= 1000 && parseVal > 0)
 					res += Integer.parseInt(value);
 			}
 		}

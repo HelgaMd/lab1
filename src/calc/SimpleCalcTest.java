@@ -17,6 +17,7 @@ public class SimpleCalcTest {
 		assertEquals(testObj.add("1\n2,3"), 6);
 		assertEquals(testObj.add("//;\n1;2;4"), 7);
 		assertEquals(testObj.add("//.\n5.5"), 10);
+		assertEquals(testObj.add("//.\n1001.2.3"), 5);
 		assertEquals(testObj.add("//[.][***][;]\n2.2***3;5"), 12);
 		assertEquals(testObj.add("//[.][***][][;]\n2.2***3;51"), 13);
 	}
