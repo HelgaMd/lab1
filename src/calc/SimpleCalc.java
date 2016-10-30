@@ -1,3 +1,4 @@
+package calc;
 
 import java.util.*;
 
@@ -12,11 +13,11 @@ public class SimpleCalc {
 	
 	
 	/**
-	 * Add single delimiter to tokensRe
+	 * add single delimiter to tokensRe
 	 * 
 	 */
 	
-	private void AddDelimiter() {
+	private void addDelimiter() {
 		String delimiter = "";
 		for(curIter = 0; inputStr.charAt(curIter) != '\n' && !Character.isDigit(inputStr.charAt(curIter + 1)); curIter++) {
 			if(regExSybmols.indexOf(inputStr.charAt(curIter)) != -1)
@@ -37,7 +38,7 @@ public class SimpleCalc {
 	 * @param delim delimiter for result string
 	 * @return String with ArrayList params with delimiter
 	 */
-	private String JoinArrayList(ArrayList<String> arrObj, char delim) {
+	private String joinArrayList(ArrayList<String> arrObj, char delim) {
 		String result = "";
 		for(int i = 0; i < arrObj.size(); i++) {
 			result += i + 1 == arrObj.size() ? arrObj.get(i) : (arrObj.get(i) + delim);
@@ -48,9 +49,9 @@ public class SimpleCalc {
 	
 	
 	/**
-	 * Add multiple delimiters to tokensRe
+	 * add multiple delimiters to tokensRe
 	 */
-	private void MulDelimiters() {
+	private void mulDelimiters() {
 		String tmp = "";
 		ArrayList<String> dels = new ArrayList<String>();
 		while(true) {
@@ -85,20 +86,20 @@ public class SimpleCalc {
 			}
 		}
 		
-		tokensRe = defTokens + "|" + JoinArrayList(dels, '|');
+		tokensRe = defTokens + "|" + joinArrayList(dels, '|');
 		inputStr = inputStr.substring(curIter);
 	}
 	
 	
 	
 	/**
-	 * Add numbers 
+	 * add numbers 
 	 * 
 	 * @param numbers
 	 * @return
 	 * @throws NegativeExc
 	 */
-	public int Add(String numbers) throws NegativeExc {
+	public int add(String numbers) throws NegativeExc {
 		
 		inputStr = numbers;
 		splitNumbers = false;
@@ -112,14 +113,14 @@ public class SimpleCalc {
 		}
 		
 		if(inputStr.length() > 1) {
-			if(inputStr.charAt(0) == '/' && inputStr.charAt(1) == '/') {
+			if((inputStr.charAt(0) == '/') && (inputStr.charAt(1) == '/')) {
 				if(inputStr.charAt(2) == '[') {
 					inputStr = inputStr.substring(2);
-					MulDelimiters();
+					mulDelimiters();
 				}
 				else {
 					inputStr = inputStr.substring(2);
-					AddDelimiter();
+					addDelimiter();
 				}
 			}
 		}
@@ -141,7 +142,7 @@ public class SimpleCalc {
 		}
 		
 		if(negValues.size() > 0)
-			throw new NegativeExc(JoinArrayList(negValues,','));
+			throw new NegativeExc(joinArrayList(negValues,','));
 		return res;
 	}
 }
