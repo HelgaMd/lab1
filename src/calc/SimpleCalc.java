@@ -134,7 +134,7 @@ public class SimpleCalc {
 				int parseVal = Integer.parseInt(value);
 				if(parseVal < 0)
 					negValues.add(value);
-				if(parseVal <= 1000 && parseVal > 0)
+				if(parseVal < 1000 && parseVal > 0)
 					res += Integer.parseInt(value);
 			}
 		}
