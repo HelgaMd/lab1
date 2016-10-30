@@ -113,7 +113,7 @@ public class SimpleCalc {
 		}
 		
 		if(inputStr.length() > 1) {
-			if((inputStr.charAt(0) == '/') && (inputStr.charAt(1) == '/')) {
+			if(inputStr.substring(0, 2).equalsIgnoreCase("//")) {
 				if(inputStr.charAt(2) == '[') {
 					inputStr = inputStr.substring(2);
 					mulDelimiters();
