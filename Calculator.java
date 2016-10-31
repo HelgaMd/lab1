@@ -5,7 +5,7 @@ import java.util.regex.*;
 public class Calculator {
 	
 	private String numbers (String str) {
-		Pattern p = Pattern.compile("(//.*\n)*((.+))");
+		Pattern p = Pattern.compile("(//.*\n)?((.+))");
 		Matcher m = p.matcher(str);
 		if(m.find()) return (m.group(2));
 		else return ("nonumbers");
