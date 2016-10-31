@@ -43,7 +43,7 @@ public class Calculator {
         return result;
     }
     
-    int checkNewString(String in)
+    private int checkNewString(String in)
     {
        int result = 0;
        //System.out.print(in);
@@ -56,7 +56,7 @@ public class Calculator {
        return result;
     }
     
-    String getDelimiter(String in)
+    private String getDelimiter(String in)
     {
         String result = ",";
         
