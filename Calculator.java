@@ -37,7 +37,7 @@ public class Calculator {
         checkNegative(numbers);
         String pNumbers = numbers (numbers);
         String pDelimiters = delimiters (numbers);
-        if(pNumbers.equals("nonumbers")){
+        if("nonumbers".equals(pNumbers)){
         	System.out.println("There're no numbers");
         	return result;
         }
