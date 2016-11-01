@@ -43,19 +43,6 @@ public class Calculator {
         return result;
     }
     
-    private int checkNewString(String in)
-    {
-       int result = 0;
-       //System.out.print(in);
-       if(in.contains("\n"))
-       {
-           String arg[] = in.split(in);
-           result = Integer.parseInt(arg[0]) + Integer.parseInt(arg[1]);        
-       }
-       
-       return result;
-    }
-    
     private String getDelimiter(String in)
     {
         String result = ",";
