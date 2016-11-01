@@ -14,8 +14,10 @@ import java.util.regex.Pattern;
  * @author Chernyshov Daniil
  */
 public class Calculator {
+    // Шаблон для выделения из входной строки разделителя
     private static String delimiterPattern = "//([\\W*])*\n";
 
+    // Массив с числами из входной строки
     private ArrayList<Integer> numbersArray;
 
     public Calculator() {
@@ -56,10 +58,7 @@ public class Calculator {
      * @return true - число больше 1000, false - число меньше 1000
      */
     private boolean isBigger1000(int number) {
-        if (number > 1000) {
-            return true;
-        }
-        return false;
+        return number > 1000;
     }
 
     /**
@@ -95,7 +94,6 @@ public class Calculator {
 
         //создание регулярного выражение, состоящего из разделителей, связанных оператором "или"
         if (del != null) {
-//            Pattern pp = Pattern.compile("\\[([^\\[\\]])*\\]");
             Pattern pp = Pattern.compile("\\[([^\\[\\]])*\\]");
             Matcher mm = pp.matcher(del);
             while (mm.find()) {
