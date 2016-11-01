@@ -3,8 +3,6 @@ package com.chernyshov777;
 import com.chernyshov777.exceptions.NegativeNumberException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,14 +27,14 @@ public class Calculator {
      * @param numbers строка с числами
      * @return сумма чисел
      */
-    public int add(String numbers) {
+    public int add(final String numbers) {
         String delimiters = findDelimiter(numbers);
         System.out.println("delimiter = " + delimiters);
         if (delimiters != null) {
             // есть разделитель
-            numbers = depatchNumberStringFromDilimiters(numbers);
-            System.out.println("Input string without first part = " + numbers);
-            String[] strings = splitInputString(delimiters, numbers);
+            String numbersWithoutFistPart = depatchNumberStringFromDilimiters(numbers);
+            System.out.println("Input string without first part = " + numbersWithoutFistPart);
+            String[] strings = splitInputString(delimiters, numbersWithoutFistPart);
             numbersArray = pickOutIntegers(strings);
             System.out.println("Array with numbers = " + numbersArray);
             try {
