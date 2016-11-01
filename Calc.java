@@ -13,7 +13,6 @@ class UnderTheZero extends Exception {
     }
 }
 
-
 public class Calc {
 
     //checking negative numbers
