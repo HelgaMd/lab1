@@ -6,7 +6,6 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -86,7 +85,7 @@ public class Main_window extends JFrame {
 			    		 }
 			    	        //  System.out.println(str1);
 			    		 
-			    		 int sum = Add(str[1],str1);
+			    		 int sum = add(str[1],str1);
 					    	String data_out = Integer.toString(sum);
 							textField.setText(data_out);
 			    		
@@ -94,14 +93,14 @@ public class Main_window extends JFrame {
 			    	else
 			    	{
 			    	String long_delim = str[0].substring(2);
-			    	int sum = Add(str[1],long_delim);
+			    	int sum = add(str[1],long_delim);
 			    	String data_out = Integer.toString(sum);
 					textField.setText(data_out);
 			    	}
 			    }
 			    else
 			    {
-				int sum = Add(enter_data);
+				int sum = add(enter_data);
 				String data_out = Integer.toString(sum);
 				textField.setText(data_out);
 			    }
@@ -114,7 +113,7 @@ public class Main_window extends JFrame {
 		contentPane.add(textField_1, BorderLayout.WEST);
 		textField_1.setColumns(10);
 	}
-	public int Add(String numbers)
+	public int add(String numbers)
 	{
 		int sum = 0;
         if (numbers.length()==0)
@@ -134,7 +133,7 @@ public class Main_window extends JFrame {
 		}
 		return sum;
 	}
-	public int Add(String numbers,String long_delim)
+	public int add(String numbers,String long_delim)
 	{
 		int sum = 0;
 	    String [] arr=numbers.split(long_delim);
