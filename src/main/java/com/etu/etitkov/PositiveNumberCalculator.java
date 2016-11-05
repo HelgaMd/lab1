@@ -1,7 +1,6 @@
 package com.etu.etitkov;
 
 import java.util.Arrays;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -19,8 +18,6 @@ public class PositiveNumberCalculator {
     private static final String DELIMITER_SEPARATOR = "\\[([^\\[\\]])*\\]";
     private static final String DEFAULT_DELIMITER_PATTERN = "//[(\\W*)]*\n";
     private static final String DEFAULT_DELIMITERS_REGEX = ",|\n";
-
-    private static final Logger LOG = Logger.getLogger(PositiveNumberCalculator.class.getName());
 
     /**
      * @param inputData - an input string with a next format:
