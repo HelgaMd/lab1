@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JCheckBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -16,7 +17,6 @@ import java.awt.event.ActionEvent;
 
 public class Main_window extends JFrame {
 
-	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 
@@ -40,6 +40,7 @@ public class Main_window extends JFrame {
 	 * Create the frame.
 	 */
 	public Main_window() {
+		JPanel contentPane;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -78,14 +79,20 @@ public class Main_window extends JFrame {
 			    		Pattern p = Pattern.compile("\\[([^\\]]*)\\]");
 			    		Matcher m = p.matcher (enter_data);
 			    		String str1="";
-			    		 if (m.find ())
-			    		 {
-			    			 str1 = m.group(1);
-			    			 while (m.find()) str1 +="|"+m.group(1);
-			    		 }
-			    	        //  System.out.println(str1);
+			    		if (m.find ())
+			    		{
+			    			str1 = m.group(1);
+			    			while (m.find()) str1 +="|"+m.group(1);
+			    		}
+			    	       //  System.out.println(str1);
 			    		 
-			    		 int sum = add(str[1],str1);
+			    		int sum = 0;
+						try {
+							sum = add(str[1],str1);
+						} catch (MyException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					    	String data_out = Integer.toString(sum);
 							textField.setText(data_out);
 			    		
@@ -93,7 +100,13 @@ public class Main_window extends JFrame {
 			    	else
 			    	{
 			    	String long_delim = str[0].substring(2);
-			    	int sum = add(str[1],long_delim);
+			    	int sum = 0;
+					try {
+						sum = add(str[1],long_delim);
+					} catch (MyException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 			    	String data_out = Integer.toString(sum);
 					textField.setText(data_out);
 			    	}
@@ -133,7 +146,7 @@ public class Main_window extends JFrame {
 		}
 		return sum;
 	}
-	public int add(String numbers,String long_delim)
+	public int add(String numbers,String long_delim) throws MyException
 	{
 		int sum = 0;
 	    String [] arr=numbers.split(long_delim);
@@ -148,7 +161,9 @@ public class Main_window extends JFrame {
 			sum = sum +Integer.parseInt(arr[i]);
 		}
 		 if (negativeList.size() > 0) {
-			  throw new RuntimeException("Negatives not allowed: " + negativeList.toString());
+			 // throw new RuntimeException("Negatives not allowed: " + negativeList.toString());
+			 throw new MyException("Negatives not allowed: " + negativeList.toString());
+			 
 		   } 
 		return sum;
 	}
