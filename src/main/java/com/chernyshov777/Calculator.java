@@ -3,8 +3,6 @@ package com.chernyshov777;
 import com.chernyshov777.exceptions.NegativeNumberException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -14,8 +12,10 @@ import java.util.regex.Pattern;
  * @author Chernyshov Daniil
  */
 public class Calculator {
+    // Шаблон для выделения из входной строки разделителя
     private static String delimiterPattern = "//([\\W*])*\n";
 
+    // Массив с числами из входной строки
     private ArrayList<Integer> numbersArray;
 
     public Calculator() {
@@ -27,14 +27,14 @@ public class Calculator {
      * @param numbers строка с числами
      * @return сумма чисел
      */
-    public int add(String numbers) {
+    public int add(final String numbers) {
         String delimiters = findDelimiter(numbers);
         System.out.println("delimiter = " + delimiters);
         if (delimiters != null) {
             // есть разделитель
-            numbers = depatchNumberStringFromDilimiters(numbers);
-            System.out.println("Input string without first part = " + numbers);
-            String[] strings = splitInputString(delimiters, numbers);
+            String numbersWithoutFistPart = depatchNumberStringFromDilimiters(numbers);
+            System.out.println("Input string without first part = " + numbersWithoutFistPart);
+            String[] strings = splitInputString(delimiters, numbersWithoutFistPart);
             numbersArray = pickOutIntegers(strings);
             System.out.println("Array with numbers = " + numbersArray);
             try {
@@ -56,10 +56,7 @@ public class Calculator {
      * @return true - число больше 1000, false - число меньше 1000
      */
     private boolean isBigger1000(int number) {
-        if (number > 1000) {
-            return true;
-        }
-        return false;
+        return number > 1000;
     }
 
     /**
@@ -95,7 +92,6 @@ public class Calculator {
 
         //создание регулярного выражение, состоящего из разделителей, связанных оператором "или"
         if (del != null) {
-//            Pattern pp = Pattern.compile("\\[([^\\[\\]])*\\]");
             Pattern pp = Pattern.compile("\\[([^\\[\\]])*\\]");
             Matcher mm = pp.matcher(del);
             while (mm.find()) {
