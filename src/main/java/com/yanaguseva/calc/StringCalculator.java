@@ -15,7 +15,11 @@ public class StringCalculator {
             return 0;
         }
         String[] values = getValues(string);
-        checkNegatives(values);
+        try {
+            checkNegatives(values);
+        } catch (NegativeNumbersException e) {
+            System.out.println(e.getMessage());
+        }
         return sum(values);
     }
 
@@ -59,7 +63,7 @@ public class StringCalculator {
         return Integer.valueOf(value);
     }
 
-    private void checkNegatives(String[] values) {
+    private void checkNegatives(String[] values) throws NegativeNumbersException {
         String negatives = "";
         for (String value : values) {
             if (parseVal(value) < 0) {
@@ -67,7 +71,7 @@ public class StringCalculator {
             }
         }
         if (negatives.length() > 0) {
-            throw new RuntimeException(NEGATIVES_NOT_ALLOWED + negatives.substring(1));
+            throw new NegativeNumbersException(NEGATIVES_NOT_ALLOWED + negatives.substring(1));
         }
     }
 }

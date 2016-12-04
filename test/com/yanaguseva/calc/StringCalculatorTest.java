@@ -9,19 +9,15 @@ public class StringCalculatorTest {
 
     @Test
     public void calcTest() {
-        checkAdd(0, "");
-        checkAdd(1, "1");
-        checkAdd(3, "1,2");
-        checkAdd(10, "1,2,4,3");
-        checkAdd(6, "1\n2;3");
-        checkAdd(3, "//[;]\n1;2");
-        checkAdd(2, "1000,2");
-        checkAdd(6, "//[;][%]\n1;2%3");
-        checkAdd(6, "//[;*][%]\n1;*2%3");
-    }
-
-    private void checkAdd(int res, String val) {
-        assertEquals(res, calculator.add(val));
+        assertEquals(0, calculator.add(""));
+        assertEquals(1, calculator.add("1"));
+        assertEquals(3, calculator.add("1,2"));
+        assertEquals(10, calculator.add("1,2,4,3"));
+        assertEquals(6, calculator.add("1\n2;3"));
+        assertEquals(3, calculator.add("//[;]\n1;2"));
+        assertEquals(2, calculator.add("1000,2"));
+        assertEquals(6, calculator.add("//[;][%]\n1;2%3"));
+        assertEquals(6, calculator.add("//[;*][%]\n1;*2%3"));
     }
 
     @Test
